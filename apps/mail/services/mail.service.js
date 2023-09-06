@@ -1,16 +1,19 @@
-// mail service
 import { utilService } from "../../../services/util.service.js"
-import { asyncStorageService } from "../../../services/async-storage.service.js"
 import { storageService } from "../../../services/storage.service.js"
+import { asyncStorageService } from "../../../services/async-storage.service.js"
+import { MailData } from "./mail.data.js"
 
 const EMAIL_KEY = 'emailDB'
-createEmails()
+const gFilterBy = { txt: '' }
+_createEmails()
 
-export const emailService = {
+export const mailService = {
     query,
     get,
+    getFilterBy,
+    setFilterBy,
     getEmptyEmail,
-    getDefaultFilter,
+    getDefaultFilter
 }
 
 const loggedinUser = {
@@ -28,17 +31,18 @@ console.log('user', loggedinUser);
 // }
 
 function query(filterBy = {}) {
-    return storageService.query(EMAIL_KEY)
+    return asyncStorageService.query(EMAIL_KEY)
         .then(emails => {
-            if (filterBy.subject) {
+            if (filterBy.txt) {
                 const regExp = new RegExp(filterBy.txt, 'i')
                 emails = emails.filter(email => regExp.test(email.subject))
             }
+            return emails
         })
 }
 
 function get(emailId) {
-    return storageService.get(EMAIL_KEY, emailId)
+    return asyncStorageService.get(EMAIL_KEY, emailId)
         .then(email => {
             return email
         })
@@ -48,29 +52,40 @@ function getEmptyEmail(subject = '', body = '') {
     return { subject, body }
 }
 
+function getFilterBy() {
+    return { ...gFilterBy }
+}
+
+function setFilterBy(filterBy = {}) {
+    if (filterBy.txt !== undefined) gFilterBy.txt = filterBy.txt
+    return gFilterBy
+}
+
 function getDefaultFilter() {
     return { txt: '' }
 }
 
-function createEmails() {
+function _createEmails() {
     let emails = storageService.loadFromStorage(EMAIL_KEY)
     if (!emails || !emails.length) {
-        emails = []
-        emails.push(createEmail('Miss you!', 'Would love to catch up sometimes'))
-        emails.push(createEmail('Meeting', 'At 16:00'))
-        emails.push(createEmail('Buy 2 pay for 1!', 'Only for our fav clients'))
+        emails = MailData.getMails()
         storageService.saveToStorage(EMAIL_KEY, emails)
-        console.log('emails', emails)
     }
 }
 
-function createEmail(subject, body) {
-    const email = getEmptyEmail(subject, body)
-    email.id = utilService.makeId(4)
-    email.isRead = false
-    email.sentAt = new Date
-    email.removedAt = null
-    email.from = 'momo@momo.com'
-    email.to = 'user@appsus.com'
-    return email
-}
+// emails = []
+// emails.push(_createEmail('Miss you!', 'Would love to catch up sometimes'))
+// emails.push(_createEmail('Meeting', 'At 16:00 were going to have a nice'))
+// emails.push(_createEmail('Buy 2 pay for 1!', 'Only for our fav clients are'))
+// console.log('emails', emails)
+
+// function _createEmail(subject, body) {
+//     const email = getEmptyEmail(subject, body)
+//     email.id = utilService.makeId(4)
+//     email.isRead = false
+//     email.sentAt = utilService.getMonthName(new Date)
+//     email.removedAt = null
+//     email.from = 'momo@momo.com'
+//     email.to = 'user@appsus.com'
+//     return email
+// }

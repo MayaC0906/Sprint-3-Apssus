@@ -1,3 +1,4 @@
+import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService } from "../services/mail.service.js"
 
@@ -8,17 +9,17 @@ const { Link } = ReactRouterDOM
 export function MailIndex() {
 
     const [emails, setEmails] = useState(null)
-     //const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
+    const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
 
-    //useEffect(() => {
-    //     mailService.query(filterBy)
-    //         .then(emails => setEmails(emails))
-    //         .catch(err => console.log('err:', err))
-    //}, )
-    //[filterBy]
-    // function onSetFilterBy(filterBy) {
-    //     setFilterBy(prevFilter => ({ ...prevFilter, ...filterBy }))
-    // }
+    useEffect(() => {
+        mailService.query(filterBy)
+            .then(setEmails)
+            .catch(err => console.log('err:', err))
+    }, [filterBy])
+
+    function onSetFilterBy(filterBy) {
+        setFilterBy(prevFilter => ({ ...prevFilter, ...filterBy }))
+    }
 
     if (!emails) return <div>Loading...</div>
     return (
@@ -26,7 +27,8 @@ export function MailIndex() {
 
             <section className="main-screen">
                 <div>main screen</div>
-                <MailList email={emails} />
+                <MailFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
+                <MailList emails={emails} />
             </section>
             <section className="side-nav">
                 <div>side nav</div>

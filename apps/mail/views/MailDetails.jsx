@@ -1,4 +1,4 @@
-import { emailService } from "../services/mail.service.js"
+import { mailService } from "../services/mail.service.js"
 
 const { useState, useEffect } = React
 const { useParams, useNavigate, Link } = ReactRouterDOM
@@ -13,9 +13,11 @@ export function MailDetails() {
     }, [params.emailId])
 
     function loadEmail() {
-        emailService.get(params.emailId)
+        mailService.get(params.emailId)
             .then(setEmail)
-            .catch(err => console.log('err:', err))
+            .catch(err => {
+                console.log('err:', err)
+            })
     }
 
     if (!email) return <div>Loading...</div>
