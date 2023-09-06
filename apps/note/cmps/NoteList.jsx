@@ -1,3 +1,4 @@
-export function NoteList() {
-    return <div>note list</div>
+export function NoteList({notes}) {
+
+    return <h1>Notes:</h1>
 }
