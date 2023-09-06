@@ -1,5 +1,15 @@
 
 export function MailIndex() {
-    return <div>mail app</div>
+    return (
+        <section className="main-layout">
+
+            <section className="main-screen">
+                <div>main screen</div>
+            </section>
+            <section className="side-nav">
+                <div>side nav</div>
+            </section>
+        </section>
+    )
 }
 
