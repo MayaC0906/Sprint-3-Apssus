@@ -8,9 +8,9 @@ _createNotes()
 
 export const noteService = {
     query,
-    // get,
+    get,
     // remove,
-    // save,
+    save,
     // getDefaultFilter,
     // getNextBookId,
     // getEmptyBook,
@@ -60,7 +60,7 @@ function _createNotes() {
                     type: 'NoteTxt',
                     isPinned: true,
                     style: {
-                        backgroundColor: '#00d'
+                        backgroundColor: '#e9c4ff'
                     },
                     info: {
                         txt: 'Fullstack Me Baby!'
@@ -71,11 +71,11 @@ function _createNotes() {
                     type: 'NoteImg',
                     isPinned: false,
                     info: {
-                        url: 'http://some-img/me',
+                        url: 'https://img.freepik.com/premium-photo/koala-her-baby-phascolarctos-cinereus_191971-11214.jpg?w=2000',
                         title: 'Bobi and Me'
                     },
                     style: {
-                        backgroundColor: '#00d'
+                        backgroundColor: '#ffe5be'
                     }
                 },
                 {

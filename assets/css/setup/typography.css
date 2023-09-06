@@ -1,0 +1,27 @@
+/* FONT AWSOME */
+
+@font-face {
+    font-family: fa;
+    src: url("../../fonts/fa-solid-900.ttf");
+}
+
+@font-face {
+    font-family: far;
+    src: url("../../fonts/fa-regular-400.ttf");
+}
+
+.fa::before {
+    font-family: fa;
+}
+
+.far::before {
+    font-family: far;
+}
+
+.fa.pin::before {
+    content: "\f08d"; 
+}
+
+.far.star::before {
+    content: "\f005"; 
+}
