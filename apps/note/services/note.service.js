@@ -8,9 +8,9 @@ _createNotes()
 
 export const noteService = {
     query,
-    // get,
+    get,
     // remove,
-    // save,
+    save,
     // getDefaultFilter,
     // getNextBookId,
     // getEmptyBook,
@@ -50,47 +50,47 @@ function save(note) {
 }
 
 function _createNotes() {
-    //console.log('hi')
+    console.log('hi')
     let notes = storageService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) {
         notes = [
-            {
-                id: 'n101',
-                createdAt: 1112222,
-                type: 'NoteTxt',
-                isPinned: true,
-                style: {
-                    backgroundColor: '#00d'
+                {
+                    id: 'n101',
+                    createdAt: 1112222,
+                    type: 'NoteTxt',
+                    isPinned: true,
+                    style: {
+                        backgroundColor: '#e9c4ff'
+                    },
+                    info: {
+                        txt: 'Fullstack Me Baby!'
+                    }
                 },
-                info: {
-                    txt: 'Fullstack Me Baby!'
-                }
-            },
-            {
-                id: 'n102',
-                type: 'NoteImg',
-                isPinned: false,
-                info: {
-                    url: 'http://some-img/me',
-                    title: 'Bobi and Me'
+                {
+                    id: 'n102',
+                    type: 'NoteImg',
+                    isPinned: false,
+                    info: {
+                        url: 'https://img.freepik.com/premium-photo/koala-her-baby-phascolarctos-cinereus_191971-11214.jpg?w=2000',
+                        title: 'Bobi and Me'
+                    },
+                    style: {
+                        backgroundColor: '#ffe5be'
+                    }
                 },
-                style: {
-                    backgroundColor: '#00d'
+                {
+                    id: 'n103',
+                    type: 'NoteTodos',
+                    isPinned: false,
+                    info: {
+                        title: 'Get my stuff together',
+                        todos: [
+                            { txt: 'Driving license', doneAt: null },
+                            { txt: 'Coding power', doneAt: 187111111 }
+                        ]
+                    }
                 }
-            },
-            {
-                id: 'n103',
-                type: 'NoteTodos',
-                isPinned: false,
-                info: {
-                    title: 'Get my stuff together',
-                    todos: [
-                        { txt: 'Driving license', doneAt: null },
-                        { txt: 'Coding power', doneAt: 187111111 }
-                    ]
-                }
-            }
-        ]
+            ]
         storageService.saveToStorage(NOTE_KEY, notes)
     }
 
