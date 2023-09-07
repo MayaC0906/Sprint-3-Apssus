@@ -26,12 +26,14 @@
      border-radius: 50%;
      border: none;
      padding: 5px 5px;
+     height: 32px;
+     width: 32px;
     }
     
     .note .pin-button:hover {
         transition: 0.3s;
-        background-color: rgba(247, 243, 243, 0.63);
-        color: rgb(66, 66, 66);
+        background-color: rgba(95,99,104,0.157);
+        color: rgb(79, 78, 78);
  }
 
  .note:hover .pin-button {

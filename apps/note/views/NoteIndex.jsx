@@ -38,6 +38,7 @@ export function NoteIndex() {
     return (
         <section className="main-layout">
             <section className="main-screen">
+                
                 {pinned &&
                     <section className="pinned-notes">
                         <h1>Pinned Notes:</h1>
