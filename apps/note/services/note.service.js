@@ -11,6 +11,7 @@ export const noteService = {
     get,
     // remove,
     save,
+    getEmptyTxtNote,
     // getDefaultFilter,
     // getNextBookId,
     // getEmptyBook,
@@ -49,8 +50,22 @@ function save(note) {
     }
 }
 
+function getEmptyTxtNote() {
+  return  {
+        createdAt: new Date(),
+        type: 'NoteTxt',
+        isPinned: false,
+        style: {
+            backgroundColor: '#e9c4ff'
+        },
+        info: {
+            title: '',
+            txt: ''
+        }
+    }
+}
+
 function _createNotes() {
-    console.log('hi')
     let notes = storageService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) {
         notes = [
@@ -63,6 +78,7 @@ function _createNotes() {
                         backgroundColor: '#e9c4ff'
                     },
                     info: {
+                        title: 'I\'m a title',
                         txt: 'Fullstack Me Baby!'
                     }
                 },

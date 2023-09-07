@@ -21,6 +21,9 @@
 .fa.pin::before {
     content: "\f08d"; 
 }
+.fa.color::before {
+    content: "\f53f"; 
+}
 
 .far.star::before {
     content: "\f005"; 

@@ -1,0 +1,37 @@
+.color-btn {
+height: 30px;
+width: 30px;
+border-radius: 50%;
+border: none;
+margin-inline-end: 10px;
+} 
+
+.color-btn:hover {
+    outline-color:black;
+    cursor: pointer;
+}
+
+.yellow-button {
+    background-color: #fff8b8;
+    outline:2px solid #fff8b8;
+}
+.pink-button {
+    background-color: #faafa8;
+    outline:2px solid #faafa8;
+}
+.green-button {
+    background-color: #e2f6d3;
+    outline:2px solid #e2f6d3;
+}
+.blue-button {
+    background-color: #d4e4ed;
+    outline:2px solid #d4e4ed;
+}
+.purple-button {
+    background-color: #d3bfdb;
+    outline:2px solid #d3bfdb ;
+}
+.gray-button {
+    background-color: #efeff1;
+    outline:2px solid #efeff1 ;
+}

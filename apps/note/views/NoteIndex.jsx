@@ -1,5 +1,6 @@
 import { NoteList } from "../cmps/NoteList.jsx"
 import { SideNav } from "../cmps/SideNav.jsx"
+import { DynamicAddNote } from "../cmps/DynamicAddNote.jsx"
 import { noteService } from "../services/note.service.js"
 
 const { useState, useEffect } = React
@@ -10,6 +11,8 @@ export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const [pinned, setpinned] = useState(null)
     const [unpinned, setunpinned] = useState(null)
+    const [toggleAddNote, setToggleAddNote] = useState(false)
+
     useEffect(() => {
         noteService.query()
             .then(setNotes)
@@ -34,11 +37,22 @@ export function NoteIndex() {
                 .then(setNotes))
     }
 
+    function onToggeleAddNote () {
+        setToggleAddNote(!toggleAddNote)
+    }
+
+    function onNewNote() {
+        noteService.query()
+        .then(setNotes)
+    }
+
     if (!notes) return <div>Loading...</div>
     return (
         <section className="main-layout">
             <section className="main-screen">
-                
+              {(!toggleAddNote) && <input onClick={onToggeleAddNote} type="text" placeholder="Write a note..." />}
+              {toggleAddNote && <DynamicAddNote onToggeleAddNote={onToggeleAddNote} onNewNote={onNewNote} />}
+
                 {pinned &&
                     <section className="pinned-notes">
                         <h1>Pinned Notes:</h1>

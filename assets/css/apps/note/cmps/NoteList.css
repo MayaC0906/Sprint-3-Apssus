@@ -12,9 +12,14 @@
      position: relative;
      min-height: 200px;
      margin-block-end: 15px;
+     border:1px solid #e0e0e0;
 
  }
 
+ .note:hover{
+    box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 1px 0 rgba(60,64,67,.3), 0 1px 1px 1px rgba(60,64,67,.15);
+ }
+ 
  .note .pin-button {
      opacity: 0;
      position: absolute;
