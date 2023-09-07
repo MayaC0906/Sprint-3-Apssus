@@ -28,7 +28,7 @@ export function DynamicAddNote({ onToggeleAddNote, onNewNote }) {
         setNewNote(prevNote => ({ ...prevNote, style: { ...prevNote.style, backgroundColor: color } }))
     }
 
-    function handleFileChange (ev) {
+    function handleFileChange(ev) {
         setNewNote(prevNote => ({ ...prevNote, info: { ...prevNote.info, url: target.value } }))
     }
 
@@ -38,17 +38,17 @@ export function DynamicAddNote({ onToggeleAddNote, onNewNote }) {
         <React.Fragment>
 
             <div style={{ backgroundColor: bgc }} className="add-txt-note">
-                <section className="add-txt-header">
-                    <button className="fa pin pin-button" onClick={onPinNote}></button>
-                    <input onChange={onSetTitle} type="text" placeholder="Title" />
-                </section>
-                <input onChange={onSetTxt} type="text" placeholder="Write A Note..." />
-                <section>
-                    <button onClick={onSaveNote}>Save</button>
-                    <button className="fa file add-file-btn">
-                        <input className = "add-file" type="file" accept=".jpg, .png" onChange={handleFileChange}/>
-                    </button>
-                    <button onClick={() => setIsColorsShown(!isColorsShown)} className="fa color"></button>
+                <button className="fa pin pin-button" onClick={onPinNote}></button>
+                <textarea className="add-title-input" onChange={onSetTitle} placeholder="Title"></textarea>
+                <textarea className="add-txt-input" onChange={onSetTxt} placeholder="Write A Note..." ></textarea>
+                <section className="bottom-line">
+                        <section className="tool-bar">
+                            <button className="fa file add-file-btn">
+                                <input className="add-file" type="file" accept=".jpg, .png" onChange={handleFileChange} />
+                            </button>
+                            <button onClick={() => setIsColorsShown(!isColorsShown)} className="fa color"></button>
+                    </section>
+                        <button className="save-note-btn" onClick={onSaveNote}>Save</button>
                 </section>
             </div>
             <ColorChoose onSetNoteColor={onSetNoteColor} isColorsShown={isColorsShown} />
