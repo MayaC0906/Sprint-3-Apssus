@@ -17,7 +17,7 @@
  }
 
  .note:hover{
-    box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 1px 0 rgba(60,64,67,.3), 0 1px 1px 1px rgba(60,64,67,.15);
+    box-shadow: inset 1px 1px 1px #dadce0, inset -1px 0 0 #dadce0, 0 1px 1px 0 rgba(60,64,67,.3), 0 1px 1px 1px rgba(60,64,67,.15);
  }
  
  .note .pin-button {
@@ -43,4 +43,10 @@
 
  .note:hover .pin-button {
      opacity: 1;
+ }
+ .note .done {
+    text-decoration: line-through;
+ }
+ .note .notDone {
+    text-decoration: none;
  }

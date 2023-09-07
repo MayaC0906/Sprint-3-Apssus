@@ -24,6 +24,9 @@
 .fa.color::before {
     content: "\f53f"; 
 }
+.fa.file::before {
+    content: "\f574"; 
+}
 
 .far.star::before {
     content: "\f005"; 

@@ -29,7 +29,6 @@ function query() {
             //   if (filterBy.price) {
             //     books = books.filter(book => book.listPrice.amount >= filterBy.price)
             //   }
-            console.log(notes)
             return notes
         })
 }
@@ -56,7 +55,7 @@ function getEmptyTxtNote() {
         type: 'NoteTxt',
         isPinned: false,
         style: {
-            backgroundColor: '#e9c4ff'
+            backgroundColor: '#FFFFFF'
         },
         info: {
             title: '',
@@ -75,23 +74,25 @@ function _createNotes() {
                     type: 'NoteTxt',
                     isPinned: true,
                     style: {
-                        backgroundColor: '#e9c4ff'
+                        backgroundColor: '#e2f6d3'
                     },
                     info: {
+                        url: '',
                         title: 'I\'m a title',
                         txt: 'Fullstack Me Baby!'
                     }
                 },
                 {
                     id: 'n102',
-                    type: 'NoteImg',
+                    type: 'NoteTxt',
                     isPinned: false,
                     info: {
                         url: 'https://img.freepik.com/premium-photo/koala-her-baby-phascolarctos-cinereus_191971-11214.jpg?w=2000',
-                        title: 'Bobi and Me'
+                        title: 'Bobi and Me',
+                        txt:''
                     },
                     style: {
-                        backgroundColor: '#ffe5be'
+                        backgroundColor: '#d3bfdb'
                     }
                 },
                 {
@@ -99,10 +100,11 @@ function _createNotes() {
                     type: 'NoteTodos',
                     isPinned: false,
                     info: {
+                        url:'',
                         title: 'Get my stuff together',
                         todos: [
-                            { txt: 'Driving license', doneAt: null },
-                            { txt: 'Coding power', doneAt: 187111111 }
+                            { id:'1', txt: 'Driving license', doneAt: null },
+                            {id:'2', txt: 'Coding power', doneAt: 187111111 }
                         ]
                     }
                 }

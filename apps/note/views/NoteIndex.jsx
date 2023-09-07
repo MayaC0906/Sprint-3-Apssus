@@ -50,7 +50,7 @@ export function NoteIndex() {
     return (
         <section className="main-layout">
             <section className="main-screen">
-              {(!toggleAddNote) && <input onClick={onToggeleAddNote} type="text" placeholder="Write a note..." />}
+              {(!toggleAddNote) && <input className="add-note-input" onClick={onToggeleAddNote} type="text" placeholder="Write a note..." />}
               {toggleAddNote && <DynamicAddNote onToggeleAddNote={onToggeleAddNote} onNewNote={onNewNote} />}
 
                 {pinned &&

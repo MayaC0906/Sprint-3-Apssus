@@ -8,15 +8,13 @@ export function NoteList({onPinChange ,notes }) {
         <Fragment>
         <section className="notes">
           {notes.map(note => {
-            console.log(note.isPinned);
-            const bgc = note.style ? note.style.backgroundColor  : "#fcfce3"
-            console.log(bgc);
+            const bgc = note.style ? note.style.backgroundColor  : "#FFFFFF"
   
             return (
               <article key={note.id} className="note" style={{ backgroundColor: bgc }}>
                 <button onClick={()=>onPinChange(note)} className="fa pin pin-button "></button>
                 <div className="dynamic-note">
-                  <DynamicNote style={note.style} id={note.id} info={note.info} type={note.type} />
+                  <DynamicNote note={note} style={note.style} id={note.id} info={note.info} type={note.type} />
                 </div>
               </article>
             );

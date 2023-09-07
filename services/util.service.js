@@ -6,6 +6,7 @@ export const utilService = {
     padNum,
     getDayName,
     getMonthName,
+    getCurrentTime
 }
 
 function makeId(length = 6) {
@@ -60,3 +61,11 @@ function getMonthName(date) {
     ]
     return monthNames[date.getMonth()]
 }
+
+function getCurrentTime(time) {
+    //time = new Date();
+    const hours = time.getHours().toString().padStart(2, '0'); // Ensure two digits
+    const minutes = time.getMinutes().toString().padStart(2, '0'); // Ensure two digits
+  
+    return `${hours}:${minutes}`;
+  }
