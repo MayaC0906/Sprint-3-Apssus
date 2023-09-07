@@ -44,6 +44,8 @@ export function MailFilter({ filterBy, onSetFilterBy }) {
 
                 <button>Search</button>
             </form>
+            <button>Read</button>
+            <button>Unread</button>
         </section>
     )
 }
