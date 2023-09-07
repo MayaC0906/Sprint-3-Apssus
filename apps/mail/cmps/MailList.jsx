@@ -1,28 +1,28 @@
+import SvgIconMail from "../../../svg/cmps/SvgIconMail.jsx"
 import { MailPreview } from "./MailPreview.jsx"
 const { Link } = ReactRouterDOM
 
-const { useState } = React
 export function MailList({ emails }) {
-    // console.log(emails)
-    //const [isRead, setIsRead] = useState(false)
 
-    function onMailClicked(email) {
-        email.isRead = true
-        // setIsRead(!isRead)
-        // console.log(isRead);
-        console.log(email);
-        //const classRead = (email.isRead) ? 'read' : 'unread'
-    }
     return (
-        //  <h1>hi</h1>
         <ul className={"mail-list "}>
             {emails.map((email) =>
-                <li key={email.id} onClick={() => onMailClicked(email)} className={(email.isRead) ? 'read' : 'unread'}>
+                <li key={email.id} >
                     <Link to={`/email/${email.id}`}>
                         <MailPreview email={email} />
                     </Link>
                     <section>
-                        {/* <button>Link</button> */}
+                        {/* <div className='how-to-use'>
+                            {SvgIconMail({ iconName: 'questMark' })}
+                        </div> */}
+
+
+
+                        {/* {SvgIconNote({ iconName: 'lightBolb' })} */}
+                        {/* </div> */}
+                        {/* onClick={() => onDeleteMail(email.id)} */}
+                        {/* <button onClick={() => onMailClicked(email)} className={(email.isRead) ? 'read' : 'unread'}>Click</button> */}
+
                     </section>
                 </li>
             )}

@@ -17,6 +17,22 @@ export function MailIndex() {
             .catch(err => console.log('err:', err))
     }, [filterBy])
 
+    function onDeleteMail(emailId) {
+        mailService.remove(emailId)
+            .then(() => {
+                setEmails(prevMail => prevMail.filter(email => email.id !== emailId))
+            })
+            .catch(err => console.log('err:', err))
+    }
+
+    function onMailClicked(email) {
+        email.isRead = true
+        // setIsRead(!isRead)
+        // console.log(isRead);
+        console.log(email);
+        //const classRead = (email.isRead) ? 'read' : 'unread'
+    }
+
     function onSetFilterBy(filterBy) {
         setFilterBy(prevFilter => ({ ...prevFilter, ...filterBy }))
     }
@@ -28,7 +44,8 @@ export function MailIndex() {
             <section className="main-screen">
                 <div>main screen</div>
                 <MailFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
-                <MailList emails={emails} />
+                {/* <MailList emails={emails} onMailClicked={onMailClicked} /> */}
+                <MailList emails={emails} onDeleteMail={onDeleteMail} />
             </section>
             <section className="side-nav">
                 <div>side nav</div>

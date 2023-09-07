@@ -1,3 +1,5 @@
+import { SvgIconMail } from "../../../svg/cmps/SvgIconMail.jsx"
+
 export function MailPreview({ email }) {
 
     function onCheck(email) {
@@ -5,6 +7,7 @@ export function MailPreview({ email }) {
     }
     return (
         <article className="email-preview flex space-between">
+            {/* <div> {SvgIconMail({ iconName: 'search' })}</div> */}
             <input type="checkbox" id="check" name="check" onInput={() => onCheck(email)} />
             <h1>⭐</h1>
             <h2>{email.from}</h2>
