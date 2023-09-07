@@ -9,12 +9,21 @@ li {
     height: 30px;
     /* border-bottom: 0.5px solid lightgray; */
     border-top: 0.5px solid lightgray;
-    gap: 1;
+
     padding: 1em;
+    color: #202124;
 }
 
 .main-list,
 li:hover {
     /* border: 1px solid gray; */
-    box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+    box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
+}
+
+.main-list li .read {
+    background-color: none;
+}
+
+.main-list li .unread {
+    background-color: #f2f6fc;
 }
