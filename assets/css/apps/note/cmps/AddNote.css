@@ -1,10 +1,10 @@
-.add-txt-note{
+.add-txt-note {
     height: fit-content;
     width: 600px;
     margin: 32px auto 16px 0;
     position: relative;
     border-radius: 8px;
-    box-shadow: inset 1px 1px 1px #dadce0, inset -1px 0 0 #dadce0, 0 1px 1px 0 rgba(60,64,67,.3), 0 1px 1px 1px rgba(60,64,67,.15);
+    box-shadow: inset 1px 1px 1px #dadce0, inset -1px 0 0 #dadce0, 0 1px 1px 0 rgba(60, 64, 67, .3), 0 1px 1px 1px rgba(60, 64, 67, .15);
     border-color: #e0e0e0;
     padding: 12px 16px 12px 16px;
     display: flex;
@@ -12,7 +12,9 @@
 
 }
 
-.add-title-input{
+.add-title-input {
+    height: fit-content;
+    resize: none;
     width: auto;
     padding: 12px 16px 12px 16px;
     font-size: 1rem;
@@ -21,6 +23,8 @@
 }
 
 .add-txt-input {
+    height: fit-content;
+    resize: none;
     width: auto;
     padding: 12px 16px 12px 16px;
     font-size: 0.875rem;
@@ -28,7 +32,16 @@
     background: none;
 }
 
-.add-txt-note .pin-button{
+
+.add-title-input:focus-visible {
+    outline: none;
+}
+
+.add-txt-input:focus-visible {
+    outline: none;
+}
+
+.add-txt-note .pin-button {
     position: absolute;
     top: 6px;
     right: 12px;
@@ -43,18 +56,18 @@
 
 .add-txt-note .pin-button:hover {
     transition: 0.3s;
-    background-color: rgba(95,99,104,0.157);
+    background-color: rgba(95, 99, 104, 0.157);
     color: rgb(66, 66, 66);
     cursor: pointer;
 }
 
-.bottom-line{
+.bottom-line {
     display: flex;
     justify-content: space-between;
     margin: 0 10px;
 }
 
-.bottom-line button:not(.save-note-btn){
+.bottom-line button:not(.save-note-btn) {
     background: none;
     border: none;
     width: 32px;
@@ -65,7 +78,7 @@
     margin-inline-end: 10px;
 }
 
-.save-note-btn{
+.save-note-btn {
     background: none;
     border: none;
     width: 80px;
@@ -75,14 +88,15 @@
     transition: 0.3s;
 }
 
-.bottom-line button:hover{
-    background-color: rgba(95,99,104,0.157); 
+.bottom-line button:hover {
+    background-color: rgba(95, 99, 104, 0.157);
+    cursor: pointer;
 }
 
-.add-file-btn{
-width: 32px;
-height: 32px;
-position: relative;
+.add-file-btn {
+    width: 32px;
+    height: 32px;
+    position: relative;
 }
 
 .add-file {

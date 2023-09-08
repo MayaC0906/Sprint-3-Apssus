@@ -9,27 +9,23 @@ _createNotes()
 export const noteService = {
     query,
     get,
-    // remove,
     save,
     getEmptyTxtNote,
-    // getDefaultFilter,
-    // getNextBookId,
-    // getEmptyBook,
-    // addReview
 
 }
 
-function query() {
+function query(isTrash) {
     return asyncStorageService.query(NOTE_KEY)
         .then(notes => {
+            const queryNote = notes.filter(note => {
+                if (!isTrash) return (note.isDeleted === false)
+                else return (note.isDeleted === true)
+            })
             //   if (filterBy.title) {
             //     const regExp = new RegExp(filterBy.title, 'i')
             //     books = books.filter(book => regExp.test(book.title))
             //   }
-            //   if (filterBy.price) {
-            //     books = books.filter(book => book.listPrice.amount >= filterBy.price)
-            //   }
-            return notes
+            return queryNote
         })
 }
 
@@ -37,9 +33,17 @@ function get(noteId) {
     return asyncStorageService.get(NOTE_KEY, noteId)
 }
 
-function remove(noteId) {
-    return asyncStorageService.remove(NOTE_KEY, noteId)
-}
+// function toggleIsDeleted(noteId) {
+//    return get(noteId)
+//         .then(note => {
+//             const newNote = { ...note, isDeleted: !note.isDeleted }
+//             return newNote
+//         })
+//         .then(newNote => {
+//             asyncStorageService.put(NOTE_KEY, newNote)
+//             return newNote
+//         })
+// }
 
 function save(note) {
     if (note.id) {
@@ -50,10 +54,11 @@ function save(note) {
 }
 
 function getEmptyTxtNote() {
-  return  {
+    return {
         createdAt: new Date(),
         type: 'NoteTxt',
         isPinned: false,
+        isDeleted:false,
         style: {
             backgroundColor: '#FFFFFF'
         },
@@ -68,47 +73,50 @@ function _createNotes() {
     let notes = storageService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) {
         notes = [
-                {
-                    id: 'n101',
-                    createdAt: 1112222,
-                    type: 'NoteTxt',
-                    isPinned: true,
-                    style: {
-                        backgroundColor: '#e2f6d3'
-                    },
-                    info: {
-                        url: '',
-                        title: 'I\'m a title',
-                        txt: 'Fullstack Me Baby!'
-                    }
+            {
+                id: 'n101',
+                createdAt: 1112222,
+                type: 'NoteTxt',
+                isPinned: true,
+                isDeleted: false,
+                style: {
+                    backgroundColor: '#e2f6d3'
                 },
-                {
-                    id: 'n102',
-                    type: 'NoteTxt',
-                    isPinned: false,
-                    info: {
-                        url: 'https://img.freepik.com/premium-photo/koala-her-baby-phascolarctos-cinereus_191971-11214.jpg?w=2000',
-                        title: 'Bobi and Me',
-                        txt:''
-                    },
-                    style: {
-                        backgroundColor: '#d3bfdb'
-                    }
-                },
-                {
-                    id: 'n103',
-                    type: 'NoteTodos',
-                    isPinned: false,
-                    info: {
-                        url:'',
-                        title: 'Get my stuff together',
-                        todos: [
-                            { id:'1', txt: 'Driving license', doneAt: null },
-                            {id:'2', txt: 'Coding power', doneAt: 187111111 }
-                        ]
-                    }
+                info: {
+                    url: '',
+                    title: 'I\'m a title',
+                    txt: 'Fullstack Me Baby!'
                 }
-            ]
+            },
+            {
+                id: 'n102',
+                type: 'NoteTxt',
+                isPinned: false,
+                isDeleted: false,
+                info: {
+                    url: 'https://cdn1.byjus.com/wp-content/uploads/blog/2023/03/17131610/STIM_Happy-Baby-Elephant-Running-scaled.jpeg',
+                    title: 'Bobi and Me',
+                    txt: ''
+                },
+                style: {
+                    backgroundColor: '#d3bfdb'
+                }
+            },
+            {
+                id: 'n103',
+                type: 'NoteTodos',
+                isPinned: false,
+                isDeleted: false,
+                info: {
+                    url: '',
+                    title: 'Get my stuff together',
+                    todos: [
+                        { id: '1', txt: 'Driving license', doneAt: null },
+                        { id: '2', txt: 'Coding power', doneAt: 187111111 }
+                    ]
+                }
+            }
+        ]
         storageService.saveToStorage(NOTE_KEY, notes)
     }
 

@@ -14,11 +14,14 @@
 /* Views */
 @import './views/home.css';
 
+
+/* NOTES */
 @import './apps/note/views/NoteIndex.css';
 
 @import './apps/note/cmps/NoteList.css';
 @import './apps/note/cmps/ColorChoose.css';
 @import './apps/note/cmps/AddNote.css';
+@import './apps/note/cmps/NoteSideNav.css';
 
 /* @import './apps/mail/views/MailIndex.css'; */
 

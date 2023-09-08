@@ -1,10 +1,10 @@
 import { noteService } from "../services/note.service.js"
-import { ColorChoose } from "./ColorChoose.jsx"
+import { NewNoteColorChoose } from "./NewNoteColorChoose.jsx"
 const { useState } = React
 export function DynamicAddNote({ onToggeleAddNote, onNewNote }) {
 
     const [newNote, setNewNote] = useState(noteService.getEmptyTxtNote())
-    const [isColorsShown, setIsColorsShown] = useState(false)
+    const [isNewColorsShown, setIsNewColorsShown] = useState(false)
 
     function onSetTitle({ target }) {
         setNewNote(prevNote => ({ ...prevNote, info: { ...prevNote.info, title: target.value } }))
@@ -24,7 +24,7 @@ export function DynamicAddNote({ onToggeleAddNote, onNewNote }) {
         onToggeleAddNote()
     }
 
-    function onSetNoteColor(color) {
+    function onSetNewNoteColor(color) {
         setNewNote(prevNote => ({ ...prevNote, style: { ...prevNote.style, backgroundColor: color } }))
     }
 
@@ -46,12 +46,12 @@ export function DynamicAddNote({ onToggeleAddNote, onNewNote }) {
                             <button className="fa file add-file-btn">
                                 <input className="add-file" type="file" accept=".jpg, .png" onChange={handleFileChange} />
                             </button>
-                            <button onClick={() => setIsColorsShown(!isColorsShown)} className="fa color"></button>
+                            <button onClick={() => setIsNewColorsShown(!isNewColorsShown)} className="fa color"></button>
                     </section>
                         <button className="save-note-btn" onClick={onSaveNote}>Save</button>
                 </section>
             </div>
-            <ColorChoose onSetNoteColor={onSetNoteColor} isColorsShown={isColorsShown} />
+            {isNewColorsShown && <NewNoteColorChoose onSetNewNoteColor={onSetNewNoteColor} isNewColorsShown={isNewColorsShown}/>}
         </React.Fragment>
     )
 }
