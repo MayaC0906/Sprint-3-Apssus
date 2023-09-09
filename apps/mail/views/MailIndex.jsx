@@ -1,3 +1,4 @@
+import { MailSideNav } from "../cmps/MailSideNav.jsx"
 import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService } from "../services/mail.service.js"
@@ -48,7 +49,7 @@ export function MailIndex() {
                 <MailList emails={emails} onDeleteMail={onDeleteMail} />
             </section>
             <section className="side-nav">
-                <div>side nav</div>
+                <MailSideNav />
             </section>
         </section>
     )

@@ -32,4 +32,7 @@
 @import './cmps/MailList.css';
 @import './cmps/MailPreview.css';
 @import './cmps/MailDetails.css';
+@import './cmps/MailFilter.css';
+@import './cmps/MailSideNav.css';
+@import './cmps/MailHelp.css';
 /* @import './apps/mail/cmps/MailList.css'; */
