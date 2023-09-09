@@ -130,7 +130,7 @@ function _createNotes() {
                 info: {
                     url: '',
                     title: 'Java script is fun',
-                    txt: 'You shout make your google keep'
+                    txt: 'You shoul\'d make your google keep'
                 },
                 style: {
                     backgroundColor: '#faafa8'
