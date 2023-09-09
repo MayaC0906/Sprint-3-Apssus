@@ -44,7 +44,6 @@ export function MailIndex() {
         <section className="main-layout">
 
             <section className="main-screen">
-                <div>main screen</div>
                 <MailFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
                 {/* <MailList emails={emails} onMailClicked={onMailClicked} /> */}
                 <MailList emails={emails} onDeleteMail={onDeleteMail} />

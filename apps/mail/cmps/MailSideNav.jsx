@@ -1,8 +1,9 @@
 import { SvgIconMail } from "../../../svg/cmps/SvgIconMail.jsx"
 export function MailSideNav() {
     return (
-        <section className="side-list">
-            <section className="side-nav">
+        <section className="side-nav">
+
+            <section className="side-nav-logo">
                 <div className='how-to-use'>
                     {SvgIconMail({ iconName: 'menu' })}
                 </div>
@@ -11,27 +12,29 @@ export function MailSideNav() {
                 </div>
                 <h2>Gmail</h2>
             </section>
-            <div className='how-to-use'>
-                    {SvgIconMail({ iconName: 'pencil' })}
+            <div className='compose'>
+                {SvgIconMail({ iconName: 'pencil' })}
+            </div>
+            <section className="side-list">
+                <div className='how-to-use'>
+                    {SvgIconMail({ iconName: 'inbox' })}
                 </div>
                 <div className='how-to-use'>
-                    {SvgIconMail({ iconName: 'inbox' })} 
+                    {SvgIconMail({ iconName: 'star' })}
                 </div>
                 <div className='how-to-use'>
-                    {SvgIconMail({ iconName: 'star' })} 
+                    {SvgIconMail({ iconName: 'schedule' })}
                 </div>
                 <div className='how-to-use'>
-                    {SvgIconMail({ iconName: 'schedule' })} 
+                    {SvgIconMail({ iconName: 'send' })}
                 </div>
                 <div className='how-to-use'>
-                    {SvgIconMail({ iconName: 'send' })} 
+                    {SvgIconMail({ iconName: 'draft' })}
                 </div>
                 <div className='how-to-use'>
-                    {SvgIconMail({ iconName: 'draft' })} 
+                    {SvgIconMail({ iconName: 'delete' })}
                 </div>
-                <div className='how-to-use'>
-                    {SvgIconMail({ iconName: 'delete' })} 
-                </div>
+            </section>
         </section>
     )
 }

@@ -16,3 +16,12 @@
 .details-layout .email-details {
     grid-area: email-details;
 }
+
+.email-details {
+    background-color: white;
+    border-radius: 30px;
+    margin-top: 6em;
+    margin-bottom: 2em;
+    margin-right: 1em;
+    padding: 1em;
+}
