@@ -12,6 +12,7 @@ li {
 
     padding: 1em;
     color: #202124;
+    background-color: #f2f6fc;
 }
 
 .main-list,
@@ -26,4 +27,23 @@ li:hover {
 
 .main-list li .unread {
     background-color: #f2f6fc;
+}
+
+.mail-lable {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+    cursor: pointer;
+}
+
+.list-filter {
+    display: flex;
+}
+
+.mail-list {
+    /* background-color: #202124; */
+    /* border-radius: 30px; */
+    box-shadow: inset 0 -1px 0 0 transparent;
+    padding: 5px;
 }
