@@ -1,10 +1,10 @@
 import { noteService } from "../services/note.service.js"
-import { ColorChoose } from "./ColorChoose.jsx"
+import { NoteColorChoose } from "./NoteColorChoose.jsx"
 const { useState } = React
 export function DynamicAddNote({ onToggeleAddNote, onNewNote }) {
 
     const [newNote, setNewNote] = useState(noteService.getEmptyTxtNote())
-    const [isColorsShown, setIsColorsShown] = useState(false)
+    const [isNewColorsShown, setIsNewColorsShown] = useState(false)
 
     function onSetTitle({ target }) {
         setNewNote(prevNote => ({ ...prevNote, info: { ...prevNote.info, title: target.value } }))
@@ -19,12 +19,13 @@ export function DynamicAddNote({ onToggeleAddNote, onNewNote }) {
     }
 
     function onSaveNote() {
+        if (!newNote.info.txt && !newNote.info.title ) return
         noteService.save(newNote)
             .then(note => onNewNote())
         onToggeleAddNote()
     }
 
-    function onSetNoteColor(color) {
+    function onSetNewNoteColor(color) {
         setNewNote(prevNote => ({ ...prevNote, style: { ...prevNote.style, backgroundColor: color } }))
     }
 
@@ -38,7 +39,7 @@ export function DynamicAddNote({ onToggeleAddNote, onNewNote }) {
         <React.Fragment>
 
             <div style={{ backgroundColor: bgc }} className="add-txt-note">
-                <button className="fa pin pin-button" onClick={onPinNote}></button>
+                <button className="fa pin small-btn" onClick={onPinNote}></button>
                 <textarea className="add-title-input" onChange={onSetTitle} placeholder="Title"></textarea>
                 <textarea className="add-txt-input" onChange={onSetTxt} placeholder="Write A Note..." ></textarea>
                 <section className="bottom-line">
@@ -46,12 +47,13 @@ export function DynamicAddNote({ onToggeleAddNote, onNewNote }) {
                             <button className="fa file add-file-btn">
                                 <input className="add-file" type="file" accept=".jpg, .png" onChange={handleFileChange} />
                             </button>
-                            <button onClick={() => setIsColorsShown(!isColorsShown)} className="fa color"></button>
+                            <button onClick={() => setIsNewColorsShown(!isNewColorsShown)} className="fa color"></button>
+                        <button className="save-note-btn" onClick={onToggeleAddNote}>close</button>
                     </section>
                         <button className="save-note-btn" onClick={onSaveNote}>Save</button>
                 </section>
+            {isNewColorsShown && <NoteColorChoose onSetNewNoteColor={onSetNewNoteColor} isNewColorsShown={isNewColorsShown}/>}
             </div>
-            <ColorChoose onSetNoteColor={onSetNoteColor} isColorsShown={isColorsShown} />
         </React.Fragment>
     )
 }
