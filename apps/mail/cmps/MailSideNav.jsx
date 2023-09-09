@@ -29,6 +29,9 @@ export function MailSideNav() {
                 <div className='how-to-use'>
                     {SvgIconMail({ iconName: 'draft' })} 
                 </div>
+                <div className='how-to-use'>
+                    {SvgIconMail({ iconName: 'delete' })} 
+                </div>
         </section>
     )
 }

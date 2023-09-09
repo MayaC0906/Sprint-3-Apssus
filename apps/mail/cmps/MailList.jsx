@@ -1,7 +1,8 @@
 import { SvgIconMail } from "../../../svg/cmps/SvgIconMail.jsx"
+import { LongTxt } from "./LongTxt.jsx"
 import { MailPreview } from "./MailPreview.jsx"
 const { Link } = ReactRouterDOM
-console.log(SvgIconMail)
+// console.log(SvgIconMail)
 export function MailList({ emails }) {
 
     return (
@@ -39,6 +40,7 @@ export function MailList({ emails }) {
                 <li key={email.id} >
                     <Link to={`/email/${email.id}`}>
                         <MailPreview email={email} />
+                    {/* <LongTxt txt={email.body} length={email.body.length} /> */}
                     </Link>
                     <section>
 

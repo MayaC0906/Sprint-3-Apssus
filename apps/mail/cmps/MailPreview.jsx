@@ -1,25 +1,29 @@
 import { SvgIconMail } from "../../../svg/cmps/SvgIconMail.jsx"
+import { LongTxt } from "./LongTxt.jsx"
 
 export function MailPreview({ email }) {
 
-   
+
     return (
         <article className="email-preview flex space-between">
-            {/* <div> {SvgIconMail({ iconName: 'search' })}</div> */}
-            {/* <input type="checkbox" id="check" name="check" onInput={() => onCheck(email)} /> */}
-            <div className='how-to-use'>
-                {SvgIconMail({ iconName: 'checkbox' })}
+            <div className="check-star">
+                <div className='how-to-use'>
+                    {SvgIconMail({ iconName: 'checkbox' })}
+                </div>
+                <div className='how-to-use'>
+                    {SvgIconMail({ iconName: 'star' })}
+                </div>
             </div>
-            <div className='how-to-use'>
-                {SvgIconMail({ iconName: 'star' })}
+            <h1>{email.from}</h1>
+            <div className="email-body">
+                <h2>{email.subject}-</h2>
+                <h3><LongTxt txt={email.body} length={email.body.length} /></h3>
             </div>
-            <h2>{email.from}</h2>
-            <h3>{email.subject} {email.body}</h3>
-            <h3>{email.sentAt}</h3>
-            <div className='how-to-use'>
+            <h4>{email.sentAt}</h4>
+            {/* <div className='how-to-use'>
                 {SvgIconMail({ iconName: 'archive' })}
             </div>
-            <div className='how-to-use'>
+            <div onClick={() => onDeleteMail(email)} className='how-to-use'>
                 {SvgIconMail({ iconName: 'delete' })}
             </div>
             <div className='how-to-use'>
@@ -27,7 +31,7 @@ export function MailPreview({ email }) {
             </div>
             <div className='how-to-use'>
                 {SvgIconMail({ iconName: 'schedule' })}
-            </div>
+            </div> */}
         </article>
     )
 }

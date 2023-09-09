@@ -1,4 +1,26 @@
+.email-preview,
+h1 {
+    font-size: 1em;
+}
+
 /* .email-preview,
-h2 {
-    
+h3 {
+    font-size: 0.5em;
 } */
+.email-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
+.email-body, h2 {
+ font-size: 1.2em;
+}
+.email-body, h3 {
+    font-size: 1em;
+}
+
+.check-star {
+    display: flex;
+    gap: 1em;
+}
