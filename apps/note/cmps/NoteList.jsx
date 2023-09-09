@@ -30,7 +30,7 @@ export function NoteList({ onPinChange, notes, onDeleteNote, onSetNoteColor, onD
                 {notes.map((note, idx) => {
                     return (
                         <Fragment>
-                            <article key={note.id} className="note" style={{ backgroundColor: bgcColors[idx] }}>
+                            <article key={note.id} className="note" style={{ backgroundColor: bgcColors[idx]}}>
                                 <button onClick={() => onPinChange(note)} className="fa pin small-btn "></button>
                                 <div className="dynamic-note">
                                     <DynamicNote note={note} style={note.style} id={note.id} info={note.info} type={note.type} />

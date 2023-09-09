@@ -1,0 +1,21 @@
+.notes-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f1f3f4;
+}
+
+.notes-header .notes-search {
+    height: 45px;
+    width: 500px;
+    border-radius: 8px;
+    background-color: #f1f3f4;
+    border: none;
+    margin: 10px;
+}
+
+.notes-header .google-keep-img{
+    margin: 10px;
+    width: 50px;
+}
+

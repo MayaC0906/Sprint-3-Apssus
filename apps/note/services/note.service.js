@@ -15,11 +15,16 @@ export const noteService = {
     remove
 }
 
-function query(isTrash) {
-    let key = isTrash? DELETE_NOTE : NOTE_KEY 
+function query(filterBy) {
+    let searchKey = filterBy.searchKey
+    let key = filterBy.isTrash? DELETE_NOTE : NOTE_KEY 
 
     return asyncStorageService.query(key)
-        .then(notes => {
+        .then(notes => { 
+            if (searchKey) {
+                const regExp = new RegExp(searchKey, 'i')
+                notes = notes.filter(note => regExp.test(note.info.title))
+              }
             return notes
         })
 }

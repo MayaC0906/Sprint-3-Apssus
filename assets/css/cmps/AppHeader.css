@@ -1,7 +1,80 @@
-header {
+header{
+    width: 100%;
+}
 
-    background: rgb(104, 178, 178);
-    border-bottom: 2px solid rgb(0, 0, 0);
+header.app-header {
+    background: rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(179, 179, 179);
+    height: 65px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+header .logo {
+    font-family: shadow;
+    letter-spacing: 0.2em;
+    font-size: 1.5rem;
+    margin-inline-start: 20px;
+}
+
+.app-header .apps-nav-container{
+border-radius: 8px;
+position: absolute;
+right: 20px;
+top: 70px;
+border: 5px solid rgb(232, 242, 250);
+padding: 5px;
+background-color: aliceblue;
+}
+
+.main-header-menu {
+background: none;
+color:rgb(177, 177, 177);;
+width: 50px;
+height: 50px;
+border: none;
+margin-inline-end: 10px;
+border-radius: 50%;
+}
+
+.main-header-menu:hover {
+    transition: 0.3s;
+    background-color: rgba(95, 99, 104, 0.157);
+    color: rgb(79, 78, 78);
+    cursor: pointer;
+}
+
+.apps-nav-container .app-nav-pic{
+    width: 50px;
+}
+
+header .logo span:nth-of-type(1) {
+    color: #4285F4;
+}
+
+header .logo span:nth-of-type(2) {
+    color: #DB4437;
+}
+
+header .logo span:nth-of-type(3) {
+    color: #F4B400;
+}
+
+header .logo span:nth-of-type(4) {
+    color: #4285F4;
+}
+
+header .logo span:nth-of-type(5) {
+    color: #0F9D58;
+}
+
+header .logo span:nth-of-type(6) {
+    color: #DB4437
+}
+
+header .logo span:nth-of-type(7){
+    color: #F4B400;
 }
 
 .app-header {

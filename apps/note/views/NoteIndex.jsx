@@ -1,5 +1,6 @@
 import { NoteList } from "../cmps/NoteList.jsx"
 import { NoteSideNav } from "../cmps/NoteSideNav.jsx"
+import { NoteHeader } from "../cmps/NoteHeader.jsx"
 import { DynamicAddNote } from "../cmps/DynamicAddNote.jsx"
 import { noteService } from "../services/note.service.js"
 
@@ -13,11 +14,12 @@ export function NoteIndex() {
     const [unpinned, setunpinned] = useState(null)
     const [toggleAddNote, setToggleAddNote] = useState(false)
     const [isTrash, setIsTrash] = useState(false)
+    const [filterBy, setFilterBy] = useState(({isTrash, serchKey:''}))
 
     useEffect(() => {
-        noteService.query(isTrash)
-            .then(setNotes)
-    }, [isTrash])
+        noteService.query(filterBy)
+            .then(newNotes=>setNotes(newNotes))
+    }, [filterBy])
 
     useEffect(() => {
         if (!notes) return
@@ -34,7 +36,7 @@ export function NoteIndex() {
     function onPinChange(note) {
         note.isPinned = !note.isPinned
         noteService.save(note)
-            .then(note => noteService.query()
+            .then(note => noteService.query(filterBy)
                 .then(setNotes))
     }
 
@@ -49,7 +51,7 @@ export function NoteIndex() {
 
     function onDeleteNote(note) {
         noteService.remove(note)
-            .then(note => noteService.query(isTrash))
+            .then(note => noteService.query(filterBy))
             .then(setNotes)
     }
 
@@ -57,12 +59,17 @@ export function NoteIndex() {
         const newNote = { ...note, id: false }
         console.log(newNote);
         noteService.save(newNote)
-            .then(note => noteService.query(isTrash))
+            .then(note => noteService.query(filterBy))
             .then(setNotes)
     }
 
     function onSetIsTrash(newIsTrash) {
         setIsTrash(newIsTrash)
+        setFilterBy(prevFilter=> ({...prevFilter, isTrash:newIsTrash}))
+    }
+
+    function onChangeSearch(newSearchKey) {
+        setFilterBy(prevFilter=> ({...prevFilter, searchKey:newSearchKey}))
     }
 
     function onSetNoteColor(note, color) {
@@ -74,6 +81,7 @@ export function NoteIndex() {
     return (
         <section className="main-layout">
             <section className="main-screen">
+                    <NoteHeader onChangeSearch={onChangeSearch}  />
                 <section className="notes-layout">
                     {(!toggleAddNote) && <input className="add-note-input" onClick={onToggeleAddNote} type="text" placeholder="Write a note..." />}
                     {toggleAddNote && <DynamicAddNote onToggeleAddNote={onToggeleAddNote} onNewNote={onNewNote} />}

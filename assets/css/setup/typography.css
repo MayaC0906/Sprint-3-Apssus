@@ -1,5 +1,8 @@
 /* FONT AWSOME */
-
+@font-face {
+    font-family: shadow;
+    src: url("../../fonts/ShadowsIntoLight-Regular.ttf");
+}
 @font-face {
     font-family: fa;
     src: url("../../fonts/fa-solid-900.ttf");
@@ -29,11 +32,10 @@
 }
 .fa.file::before {
     content: "\f574"; 
-}
+} 
 .fa.note::before {
     content: "\f249"; 
 }
-
 .far.star::before {
     content: "\f005"; 
 }
