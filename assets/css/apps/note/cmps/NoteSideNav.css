@@ -1,6 +1,7 @@
 .note-side-nav {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .note-side-nav:first-child {
