@@ -27,11 +27,11 @@ export function NoteTodosPreview({ note, info }) {
     }
 
     return <div className="note-info todo-note">
-        <h1>{info.title}</h1>
+        <h2 className="note-title">{info.title}</h2>
         {notDone.length>0 && 
         <ul >
             {notDone.map((todo) =>
-                <li key={todo.id} className="notDone" onClick={() => onChangeToDo(todo.id)}> {todo.txt}</li>
+                <li input key={todo.id} className="notDone note-txt" onClick={() => onChangeToDo(todo.id)}> <input type="checkbox" checked={false}/> {todo.txt}</li>
             )
             }
         </ul>
@@ -39,7 +39,7 @@ export function NoteTodosPreview({ note, info }) {
 
         {done.length>0 && <ul>
             {done.map((todo) =>
-                <li key={todo.id}  className="done" onClick={() => onChangeToDo(todo.id)}> {todo.txt}</li>
+                <li key={todo.id}  className="done note-txt" onClick={() => onChangeToDo(todo.id)}> <input type="checkbox" checked={true}/> {todo.txt}</li>
             )
             }
         </ul>

@@ -37,4 +37,7 @@
 .far.star::before {
     content: "\f005"; 
 }
+.far.copy::before {
+    content: "\f0c5"; 
+}
 

@@ -1,5 +1,5 @@
 import { noteService } from "../services/note.service.js"
-import { NewNoteColorChoose } from "./NewNoteColorChoose.jsx"
+import { NoteColorChoose } from "./NoteColorChoose.jsx"
 const { useState } = React
 export function DynamicAddNote({ onToggeleAddNote, onNewNote }) {
 
@@ -19,6 +19,7 @@ export function DynamicAddNote({ onToggeleAddNote, onNewNote }) {
     }
 
     function onSaveNote() {
+        if (!newNote.info.txt && !newNote.info.title ) return
         noteService.save(newNote)
             .then(note => onNewNote())
         onToggeleAddNote()
@@ -38,7 +39,7 @@ export function DynamicAddNote({ onToggeleAddNote, onNewNote }) {
         <React.Fragment>
 
             <div style={{ backgroundColor: bgc }} className="add-txt-note">
-                <button className="fa pin pin-button" onClick={onPinNote}></button>
+                <button className="fa pin small-btn" onClick={onPinNote}></button>
                 <textarea className="add-title-input" onChange={onSetTitle} placeholder="Title"></textarea>
                 <textarea className="add-txt-input" onChange={onSetTxt} placeholder="Write A Note..." ></textarea>
                 <section className="bottom-line">
@@ -47,11 +48,12 @@ export function DynamicAddNote({ onToggeleAddNote, onNewNote }) {
                                 <input className="add-file" type="file" accept=".jpg, .png" onChange={handleFileChange} />
                             </button>
                             <button onClick={() => setIsNewColorsShown(!isNewColorsShown)} className="fa color"></button>
+                        <button className="save-note-btn" onClick={onToggeleAddNote}>close</button>
                     </section>
                         <button className="save-note-btn" onClick={onSaveNote}>Save</button>
                 </section>
+            {isNewColorsShown && <NoteColorChoose onSetNewNoteColor={onSetNewNoteColor} isNewColorsShown={isNewColorsShown}/>}
             </div>
-            {isNewColorsShown && <NewNoteColorChoose onSetNewNoteColor={onSetNewNoteColor} isNewColorsShown={isNewColorsShown}/>}
         </React.Fragment>
     )
 }

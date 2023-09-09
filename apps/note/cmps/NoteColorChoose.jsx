@@ -1,8 +1,12 @@
-export function NewNoteColorChoose ({onSetNewNoteColor,isNewColorsShown }) {
-
+export function NoteColorChoose ({onSetNewNoteColor,isNewColorsShown, onSetNoteColor,note,onSetNewBgc,idx }) {
     function SetNoteColor (color) {
         if (isNewColorsShown) {
             onSetNewNoteColor(color)
+        }
+
+        else {
+            onSetNoteColor(note, color)
+            onSetNewBgc(idx, color)
         }
     }
     return (
