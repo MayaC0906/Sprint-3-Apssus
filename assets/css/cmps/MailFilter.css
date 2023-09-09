@@ -4,6 +4,7 @@
     height: 50px;
     border: none;
     background-color: #f2f6fc;
+    outline: none;
 }
 
 .email-filter {

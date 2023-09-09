@@ -1,3 +1,4 @@
+import { MailSideNav } from "../cmps/MailSideNav.jsx"
 import { mailService } from "../services/mail.service.js"
 
 const { useState, useEffect } = React
@@ -26,10 +27,11 @@ export function MailDetails() {
     return (
         <section className="details-layout">
             <section className="email-details">
-                <h2>{email.subject}</h2>
-                <h3>{email.from} {email.sentAt}</h3>
-                <h1>{email.body}</h1>
+                <h1>{email.subject}</h1>
+                <h2>{email.from} {email.sentAt}</h2>
+                <h3>{email.body}</h3>
             </section>
+            <MailSideNav />
         </section>
     )
 }

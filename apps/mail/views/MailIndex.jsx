@@ -2,6 +2,7 @@ import { MailSideNav } from "../cmps/MailSideNav.jsx"
 import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService } from "../services/mail.service.js"
+import { MailPreview } from "../cmps/MailPreview.jsx"
 
 
 const { useState, useEffect } = React
